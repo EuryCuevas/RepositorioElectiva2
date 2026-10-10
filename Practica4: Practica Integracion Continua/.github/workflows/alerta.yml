@@ -15,6 +15,9 @@ jobs:
       - name: Ejecutar programa Hola Mundo
         run: node index.js
 
-      - name: Enviar notificación a ntfy.sh
+      - name: Enviar notificación a ntfy
         run: |
-          curl -d "Se ha subido un nuevo commit a la rama main" https://ntfy.sh/devops-itla
+          curl \
+            -H "Title: Nuevo push en main" \
+            -d "El usuario ${{ github.actor }} subió código a ${{ github.repository }}" \
+            ntfy.sh/devops-itla
